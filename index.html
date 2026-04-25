@@ -1,0 +1,494 @@
+Here's a **beast-mode, fully responsive webpage** for **GJ 01 StreetWear** with a modern streetwear theme (dark, edgy, neon accents, bold typography):
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GJ 01 StreetWear - Ahmedabad's Finest Street Fashion</title>
+    <meta name="description" content="GJ 01 StreetWear - Premium streetwear in Ahmedabad. Shop hoodies, tees, cargos & more. Opposite Kalapi Restaurant, Bhadra Road.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>GJ</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-neon: #00ff88;
+            --secondary-neon: #ff0080;
+            --dark-bg: #0a0a0a;
+            --dark-card: #1a1a1a;
+            --text-light: #ffffff;
+            --text-muted: #b0b0b0;
+            --accent-gold: #ffd700;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 50%, #16213e 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--primary-neon), var(--secondary-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary-neon);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-neon);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, var(--primary-neon) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, var(--secondary-neon) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, var(--accent-gold) 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.1) translateY(-20px); }
+        }
+
+        .hero-content h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px var(--primary-neon); }
+            to { text-shadow: 0 0 30px var(--primary-neon), 0 0 40px var(--primary-neon); }
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-neon), var(--secondary-neon));
+            color: var(--dark-bg);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--primary-neon);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-neon);
+            color: var(--dark-bg);
+        }
+
+        /* Info Cards */
+        .info-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--primary-neon), var(--secondary-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-card {
+            background: var(--dark-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .info-card:hover::before {
+            left: 100%;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.3);
+            border-color: var(--primary-neon);
+        }
+
+        .info-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-neon);
+        }
+
+        .info-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Instagram Feed */
+        .insta-section {
+            background: var(--dark-card);
+            padding: 4rem 2rem;
+        }
+
+        .insta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+        }
+
+        .insta-post {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .insta-post:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .insta-post img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .insta-post:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            padding: 3rem 2rem 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .footer h4 {
+            font-family: 'Bebas Neue', cursive;
+            margin-bottom: 1rem;
+            color: var(--primary-neon);
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: slideInUp 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-neon);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">GJ 01</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#instagram">Instagram</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="animate">GJ 01 StreetWear</h1>
+            <p>Ahmedabad's Ultimate Street Fashion Destination</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/message/LK723K2LB2TQA1" target="_blank" class="btn btn-primary">WhatsApp Now</a>
+                <a href="https://www.instagram.com/gj01streetwear?igsh=Z2h2a2E3a3BpbDNy" target="_blank" class="btn btn-secondary">Follow Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <h2 class="section-title animate">STORE INFO</h2>
+        <div class="info-grid">
+            <div class="info-card animate">
+                <div class="icon">📍</div>
+                <h3>Visit Us</h3>
+                <p><strong>GJ 01 Street Wear</strong><br>
+                Hotel Cadilac, Ground Floor<br>
+                Opposite Kalapi Restaurant<br>
+                Near Electric House<br>
+                Bhadra Road, Ahmedabad - 380001</p>
+                <a href="https://maps.app.goo.gl/RZUzT9jn6Meh3Ngc9?g_st=ac" target="_blank" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Get Directions</a>
+            </div>
+            <div class="info-card animate">
+                <div class="icon">📱</div>
+                <h3>Contact</h3>
+                <p><strong>Mobile:</strong> <a href="tel:+917016017446">+91 70160 17446</a><br>
+                <strong>WhatsApp:</strong> <a href="https://wa.me/message/LK723K2LB2TQA1" target="_blank">Chat Now</a></p>
+                <a href="https://wa.me/message/LK723K2LB2TQA1" target="_blank" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Start Chat</a>
+            </div>
+            <div class="info-card animate">
+                <div class="icon">⭐</div>
+                <h3>Leave a Review</h3>
+                <p>Love our collection? Drop us a review!</p>
+                <a href="https://g.page/r/CSraBbMj8oxFEBM/review" target="_blank" class="btn btn-secondary" style="margin-top: 1rem; width: 100%;">Write Review</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section id="instagram" class="insta-section">
+        <div class="info-section">
+            <h2 class="section-title animate" style="color: var(--text-light);">FOLLOW @gj01streetwear</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                Check our latest drops and street style 🔥
+            </p>
+        </div>
+        <div class="insta-grid">
+            <!-- Instagram placeholder posts - replace with actual feed API -->
+            <a href="https://www.instagram.com/gj01streetwear?igsh=Z2h2a2E3a3BpbDNy" target="_blank" class="insta-post">
+                <img src="https://via.placeholder.com/400x400/1a1a1a/00ff88?text=GJ+01" alt="Streetwear">
+            </a>
+            <a href="https://www.instagram.com/gj01streetwear?igsh=Z2h2a2E3a3BpbDNy" target="_blank" class="insta-post">
+                <img src="https://via.placeholder.com/400x400/1a1a1a/ff0080?text=GJ+01" alt="Streetwear">
+            </a>
+            <a href="https://www.instagram.com/gj01streetwear?igsh=Z2h2a2E3a3BpbDNy" target="_blank" class="insta-post">
+                <img src="https://via.placeholder.com/400x400/1a1a1a/ffd700?text=GJ+01" alt="Streetwear">
+            </a>
+            <a href="https://www.instagram.com/gj01streetwear?igsh=Z2h2a2E3a3BpbDNy" target="_blank" class="insta-post">
+                <img src="https://via.placeholder.com/400x400/1a1a1a/00ff88?text=GJ+01" alt="Streetwear">
+            </a>
+            <a href="https://www.instagram.com/gj01streetwear?igsh=Z2h2a2E3a3BpbDNy" target="_blank" class="insta-post">
+                <img src="https://via.placeholder.com/400x400/1a1a1a/ff0080?text=GJ+01" alt="Streetwear">
+            </a>
+            <a href="https://www.instagram.com/gj01streetwear?igsh=Z2h2a2E3a3BpbDNy" target="_blank" class="insta-post">
+                <img src="https://via.placeholder.com/400x400/1a1a
